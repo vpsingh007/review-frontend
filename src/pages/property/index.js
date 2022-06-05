@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 import { useState } from 'react';
 import { listAllProperties } from '../../actions/propertyAction';
 import Card from '../../components/blog/Card';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
 import PropertiesList from '../../components/property/PropertiesList';
 
 const Properties = ({ properties }) => {
