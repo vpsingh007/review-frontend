@@ -3,7 +3,7 @@ import renderHTML from 'react-render-html';
 import { useState, useEffect } from 'react';
 import { listSearch } from '../../actions/blog';
 
-const SearchBox = () => {
+const SearchBox = ({hideBanner}) => {
     const [values, setValues] = useState({
         city: undefined,
         search: undefined,
@@ -84,7 +84,7 @@ const SearchBox = () => {
 
     return (
         <div className="container-fluid">
-            <h2 className='title_color text-center mt-3'>India's largest reviews site</h2>
+            {!hideBanner && <h2 className='title_color text-center mt-3'>India's largest reviews site</h2> }
             <div className="pt-3 pb-5 search-box mx-auto">{searchForm()}</div>            
         </div>
     );

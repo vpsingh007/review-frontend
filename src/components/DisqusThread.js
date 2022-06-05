@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DISQUS_SHORTNAME, DOMAIN } from '../config';
+import { DISQUS_SHORTNAME, DOMAIN } from '../../config';
 
 const SHORTNAME = DISQUS_SHORTNAME;
 const WEBSITE_URL = DOMAIN;

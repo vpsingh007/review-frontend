@@ -9,6 +9,8 @@ import renderHTML from 'react-render-html';
 import moment from 'moment';
 import SmallCard from '../../components/blog/SmallCard';
 import DisqusThread from '../../components/DisqusThread';
+import SearchBox from '../../components/shared/SearchBox';
+import SinglePropertyCard from '../../components/property/SinglePropertyCard';
 
 const SingleProperty = ({ property, query }) => {
     const [related, setRelated] = useState([]);
@@ -85,13 +87,15 @@ const SingleProperty = ({ property, query }) => {
         //     {head()}
         <React.Fragment>
             <Layout>
-                <main>
-                        <div className="container-fluid">
-                            <section>
-                                <h1>Property Name: {property.propertyname}</h1>
-                            </section>
-                            </div>
-                </main>
+                <SearchBox hideBanner/>
+                <SinglePropertyCard propertyData={property}/>
+                {/* <main>
+                    <div className="container-fluid">
+                        <section>
+                            <h1>Property Name: {property.propertyname}</h1>
+                        </section>
+                    </div>
+                </main> */}
             </Layout>
         </React.Fragment>
     );
