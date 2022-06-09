@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import { useState, useEffect } from 'react';
 import { singleBlog, listRelated } from '../../actions/blog';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import SmallCard from '../../components/blog/SmallCard';

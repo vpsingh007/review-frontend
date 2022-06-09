@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { API } from '../config';
+import { API } from '../../config';
 import { handleResponse } from './auth';
 
 export const create = (category, token) => {
