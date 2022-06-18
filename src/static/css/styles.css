@@ -66,3 +66,13 @@
 .h-44 {
     height: 44px;
 }
+
+.slick-prev:before {
+    color: black !important;
+}
+.slick-next:before {
+    color: black !important;
+}
+.slick-slide{
+    width:233px !important;
+}

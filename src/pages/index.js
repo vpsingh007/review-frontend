@@ -6,6 +6,7 @@ import RecentlyAddedReviews from '../components/reviews/RecentlyAddedReviews';
 import Button from 'react-bootstrap/Button'
 import PopupContext from '../components/context/popupContext';
 import { useContext } from 'react';
+import PropertyHomePage from '../components/property/PropertyHomePage';
 const Index = () => {
     const value = useContext(PopupContext);
     const { setIsPopupOpen, setPopupData } = value;
@@ -33,11 +34,10 @@ const Index = () => {
                 <SearchBox />
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-sm-12 col-md-9'>
-                            <RecentlyAddedReviews />
+                        <div className='col-sm-12'>
                             <Button onClick={createPopup} variant="primary">Add a Property</Button>
+                            <PropertyHomePage/>
                         </div>
-                        <div className='col-sm-12 col-md-3'>Left Section</div>
                     </div>
                 </div>
             </Layout>
