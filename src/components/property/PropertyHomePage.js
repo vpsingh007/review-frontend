@@ -8,6 +8,7 @@ import { useForm } from '../hooks/useForm';
 import { Form, Button } from 'react-bootstrap';
 import { returnFormField } from '../../helpers/createFormField';
 import { signup, isAuth } from '../../actions/auth';
+import Router from 'next/router';
 const PropertyHomePage = ({ allProperties }) => {
     const [isExpanded, setIsExpanded] = useState([]);
     const removeFromExpanded = (index) => {
@@ -25,8 +26,8 @@ const PropertyHomePage = ({ allProperties }) => {
             if (data.error) {
                 console.log('error');
             } else {
-                console.log('data');
-                isAuth() && Router.push(`/`);
+                console.log('Success');
+                Router.push(`/signin`);
             }
         });
     }
