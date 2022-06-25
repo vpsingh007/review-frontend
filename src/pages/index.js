@@ -9,7 +9,9 @@ import { useContext } from 'react';
 import PropertyHomePage from '../components/property/PropertyHomePage';
 import { addProperty } from '../actions/propertyAction';
 import { getCookie, isAuth } from '../actions/auth';
-const Index = () => {
+import { listAllProperties } from '../actions/propertyAction';
+const Index = ({properties}) => {
+    console.log(properties);
     const value = useContext(PopupContext);
     const { setIsPopupOpen, setPopupData } = value;
     const submitProperty = (values) => {
@@ -49,7 +51,7 @@ const Index = () => {
                     <div className='row'>
                         <div className='col-sm-12'>
                             {isAuth() && <Button onClick={createPopup} variant="primary">Add a Property</Button>}
-                            <PropertyHomePage />
+                            <PropertyHomePage allProperties={properties} />
                         </div>
                     </div>
                 </div>
@@ -202,3 +204,16 @@ const stateOptions = [
 ]
 
 export default Index
+Index.getInitialProps = () => {
+    let skip = 0;
+    let limit = 2;
+    return listAllProperties(skip, limit).then(data => {
+        if (data.error) {
+            console.log(data.error);
+        } else {
+            return {
+                properties: data
+            };
+        }
+    });
+};
