@@ -10,7 +10,6 @@ import { returnFormField } from '../../helpers/createFormField';
 import { signup, isAuth } from '../../actions/auth';
 const PropertyHomePage = () => {
     const [isExpanded, setIsExpanded] = useState([]);
-    console.log('>', isExpanded)
     const removeFromExpanded = (index) => {
         setIsExpanded(isExpanded.filter(item => item !== index));
     }
@@ -21,6 +20,7 @@ const PropertyHomePage = () => {
     ]
 
     const onSignup = () => {
+        console.log(formData)
         signup({ email: formData.email, name: formData.email, password: formData.password }).then(data => {
             if (data.error) {
                 console.log('error');
@@ -29,6 +29,17 @@ const PropertyHomePage = () => {
                 isAuth() && Router.push(`/`);
             }
         });
+    }
+    const checkDisable = () => {
+        let isDisabled = false;
+        if (formData.agree) {
+            if (Object.keys(formData).some(el => formData[el] === '')) {
+                isDisabled = true;
+            }
+        } else {
+            isDisabled = true;
+        }
+        return isDisabled
     }
     return (
         <div>
@@ -87,11 +98,11 @@ const PropertyHomePage = () => {
                                 })}
                             </Form>
                             <div className='mb-1' style={{ display: 'flex' }}>
-                                <input className="me-1" value={formData.agree} type="checkbox" id="agree" name="agree" />
+                                <input className="me-1" defaultChecked={formData.agree} onChange={e => setFormData(e, !(formData.agree))} type="checkbox" id="agree" name="agree" />
                                 <span style={{ marginTop: '-5px' }}>I agree to all the statements in Terms of service</span>
                             </div>
 
-                            <Button className='signup-button border' style={{ width: '100%' }} onClick={() => onSignup()}>
+                            <Button disabled={checkDisable()} className='signup-button border' style={{ width: '100%' }} onClick={() => onSignup()}>
                                 Sign-Up
                             </Button>
 

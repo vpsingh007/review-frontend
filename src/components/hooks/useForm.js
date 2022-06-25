@@ -2,6 +2,19 @@ import React, { useState } from 'react';
 
 export const useForm = initialValue => {
     const [values, setValues] = useState(initialValue);
-    return [values, e => { setValues({ ...values, [e.target.name]: e.target.value }) }]
+    console.log(values)
+
+    const setValuesForm = (e, val) => {
+        console.log('custOmVal',val);
+        let value;
+        if(val!== undefined){
+            value = val
+        } else {
+            value = e.target.value
+        }
+
+        setValues({ ...values, [e.target.name]: value })
+    }
+    return [values, setValuesForm]
 };
 
