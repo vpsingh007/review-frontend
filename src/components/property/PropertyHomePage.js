@@ -7,6 +7,7 @@ import MySlider from '../shared/Slider';
 import { useForm } from '../hooks/useForm';
 import { Form, Button } from 'react-bootstrap';
 import { returnFormField } from '../../helpers/createFormField';
+import { signup, isAuth } from '../../actions/auth';
 const PropertyHomePage = () => {
     const [isExpanded, setIsExpanded] = useState([]);
     console.log('>', isExpanded)
@@ -18,6 +19,17 @@ const PropertyHomePage = () => {
     { fieldHeading: 'Email', fieldName: 'email', fieldType: 'email', initialValue: '' },
     { fieldHeading: 'Password', fieldName: 'password', fieldType: 'password', initialValue: '' },
     ]
+
+    const onSignup = () => {
+        signup({ email: formData.email, name: formData.email, password: formData.password }).then(data => {
+            if (data.error) {
+                console.log('error');
+            } else {
+                console.log('data');
+                isAuth() && Router.push(`/`);
+            }
+        });
+    }
     return (
         <div>
             <div className="row">
@@ -41,7 +53,7 @@ const PropertyHomePage = () => {
                                     <div>
                                         {isExpanded.includes(index) ? data.description : data.description.substring(0, 90)} &nbsp;{isExpanded.includes(index) ? <div style={{ display: 'inline-block', cursor: 'pointer' }} onClick={() => removeFromExpanded(index)} className='text-primary'>Show Less...</div> : <div style={{ display: 'inline-block', cursor: 'pointer' }} onClick={() => setIsExpanded([...isExpanded, index])} className='text-primary'>Read More...</div>}</div>
                                 </div>
-                                <div className='col-4' style={{alignSelf:'center'}}>
+                                <div className='col-4' style={{ alignSelf: 'center' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between' }} >
                                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                             <div style={{ color: 'green', fontSize: '20px' }}>12</div>
@@ -65,24 +77,27 @@ const PropertyHomePage = () => {
                 </div>
                 <div className='col-md-1'></div>
                 <div className="col-md-3">
-                    <h6 className="mt-4">Signup to add reviews</h6>
-                    <div className='border border-success p-4'>
+                    {!isAuth() && <div>
+                        <h6 className="mt-4">Signup to add reviews</h6>
+                        <div className='border border-success p-4'>
 
-                        <Form>
-                            {signUpForm.map((el, index) => {
-                                return (<div key={index}> {returnFormField(el, setFormData, formData, index)} </div>)
-                            })}
-                        </Form>
-                        <div className='mb-1' style={{ display: 'flex' }}>
-                            <input className="me-1" value={formData.agree} type="checkbox" id="agree" name="agree" />
-                            <span style={{ marginTop: '-5px' }}>I agree to all the statements in Terms of service</span>
+                            <Form>
+                                {signUpForm.map((el, index) => {
+                                    return (<div key={index}> {returnFormField(el, setFormData, formData, index)} </div>)
+                                })}
+                            </Form>
+                            <div className='mb-1' style={{ display: 'flex' }}>
+                                <input className="me-1" value={formData.agree} type="checkbox" id="agree" name="agree" />
+                                <span style={{ marginTop: '-5px' }}>I agree to all the statements in Terms of service</span>
+                            </div>
+
+                            <Button className='signup-button border' style={{ width: '100%' }} onClick={() => onSignup()}>
+                                Sign-Up
+                            </Button>
+
                         </div>
+                    </div>}
 
-                        <Button className='signup-button border' style={{ width: '100%' }} onClick={() => { console.log(formData) }}>
-                            Sign-Up
-                        </Button>
-
-                    </div>
 
 
                 </div>
