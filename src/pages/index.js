@@ -8,7 +8,7 @@ import PopupContext from '../components/context/popupContext';
 import { useContext } from 'react';
 import PropertyHomePage from '../components/property/PropertyHomePage';
 import { addProperty } from '../actions/propertyAction';
-import { signup, getCookie, isAuth } from '../actions/auth';
+import { getCookie, isAuth } from '../actions/auth';
 const Index = () => {
     const value = useContext(PopupContext);
     const { setIsPopupOpen, setPopupData } = value;
@@ -19,7 +19,7 @@ const Index = () => {
         addProperty(property, token).then(data => {
             if (data.error) {
                 console.log(data.error)
-            } else{
+            } else {
                 console.log(data)
             }
         });
@@ -48,7 +48,7 @@ const Index = () => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-12'>
-                            <Button onClick={createPopup} variant="primary">Add a Property</Button>
+                            {isAuth() && <Button onClick={createPopup} variant="primary">Add a Property</Button>}
                             <PropertyHomePage />
                         </div>
                     </div>
