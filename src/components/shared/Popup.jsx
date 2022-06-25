@@ -2,40 +2,13 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Form, Button } from 'react-bootstrap';
 import { useForm } from '../hooks/useForm';
-
+import { returnFormField } from '../../helpers/createFormField';
 const Popup = ({ isPopupOpen, setIsPopupOpen, popupData }) => {
     const initialFormData = {};
     popupData.formData.map(el => {
         initialFormData[el.fieldName] = el.initialValue;
     })
     const [formValues, setFormValues] = useForm(initialFormData);
-
-    const returnFormField = (fieldData,index) => {
-        let field;
-        if (fieldData.fieldType === 'dropdown') {
-            field = <Form.Select name={fieldData.fieldName} onChange={setFormValues} value={formValues[fieldData.fieldName]} aria-label="Default select example">
-                <option>{fieldData.fieldHeading}</option>
-                {fieldData.options.map((el,i) => {
-                    return <option key={i} value={el.value}>{el.name}</option>
-                })}
-            </Form.Select>
-        } else {
-            field = <Form.Control
-                type={fieldData.fieldType}
-                placeholder={'Enter ' + fieldData.fieldHeading}
-                autoFocus={index === 0 ? true : false}
-                name={fieldData.fieldName}
-                value={formValues[fieldData.fieldName]}
-                onChange={setFormValues}
-            />
-        }
-
-        return (<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>{fieldData.fieldHeading}</Form.Label>
-            {field}
-        </Form.Group>)
-
-    }
     return (
         <>
             <Modal show={isPopupOpen} onHide={() => { setIsPopupOpen(false) }}>
@@ -45,7 +18,7 @@ const Popup = ({ isPopupOpen, setIsPopupOpen, popupData }) => {
                 <Modal.Body>
                     <Form>
                         {popupData.formData.map((el, index) => {
-                            return (<div key={index}> {returnFormField(el,index)} </div>)
+                            return (<div key={index}> {returnFormField(el, setFormValues, formValues, index)} </div>)
                         })}
                     </Form>
                 </Modal.Body>
