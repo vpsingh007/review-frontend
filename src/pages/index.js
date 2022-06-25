@@ -7,14 +7,27 @@ import Button from 'react-bootstrap/Button'
 import PopupContext from '../components/context/popupContext';
 import { useContext } from 'react';
 import PropertyHomePage from '../components/property/PropertyHomePage';
+import { addProperty } from '../actions/propertyAction';
+import { signup, getCookie, isAuth } from '../actions/auth';
 const Index = () => {
     const value = useContext(PopupContext);
     const { setIsPopupOpen, setPopupData } = value;
-
+    const submitProperty = (values) => {
+        const token = getCookie('token');
+        const { propertyName, sector, city } = values;
+        const property = { propertyname: propertyName, sector, city };
+        addProperty(property, token).then(data => {
+            if (data.error) {
+                console.log(data.error)
+            } else{
+                console.log(data)
+            }
+        });
+    }
     const createPopup = () => {
         const popupdata = {
             heading: "Add Property",
-            onSubmit: (values) => { console.log('Final Values', values) },
+            onSubmit: (values) => { submitProperty(values) },
             buttons: ['Close', 'Add Property'],
             formData: [{ fieldHeading: 'Property Type', fieldName: 'propertyType', fieldType: 'dropdown', options: [{ name: 'Outdoor', value: 'outdoor' }, { name: 'Flats', value: 'flats' }], initialValue: '' },
             { fieldHeading: 'Property Name', fieldName: 'propertyName', fieldType: 'text', initialValue: '' },
@@ -36,7 +49,7 @@ const Index = () => {
                     <div className='row'>
                         <div className='col-sm-12'>
                             <Button onClick={createPopup} variant="primary">Add a Property</Button>
-                            <PropertyHomePage/>
+                            <PropertyHomePage />
                         </div>
                     </div>
                 </div>

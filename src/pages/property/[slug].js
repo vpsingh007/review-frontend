@@ -5,7 +5,6 @@ import Layout from '../../components/Layout';
 import { useState, useEffect } from 'react';
 // import { singleProperty, listRelated } from '../../actions/blog';
 import { singleProperty, listRelated } from '../../actions/propertyAction';
-import renderHTML from 'react-render-html';
 import moment from 'moment';
 import SmallCard from '../../components/blog/SmallCard';
 import DisqusThread from '../../components/DisqusThread';
