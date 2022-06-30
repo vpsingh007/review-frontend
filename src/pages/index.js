@@ -7,14 +7,29 @@ import Button from 'react-bootstrap/Button'
 import PopupContext from '../components/context/popupContext';
 import { useContext } from 'react';
 import PropertyHomePage from '../components/property/PropertyHomePage';
-const Index = () => {
+import { addProperty } from '../actions/propertyAction';
+import { getCookie, isAuth } from '../actions/auth';
+import { listAllProperties } from '../actions/propertyAction';
+const Index = ({properties}) => {
+    console.log(properties);
     const value = useContext(PopupContext);
     const { setIsPopupOpen, setPopupData } = value;
-
+    const submitProperty = (values) => {
+        const token = getCookie('token');
+        const { propertyName, sector, city } = values;
+        const property = { propertyname: propertyName, sector, city };
+        addProperty(property, token).then(data => {
+            if (data.error) {
+                console.log(data.error)
+            } else {
+                console.log(data)
+            }
+        });
+    }
     const createPopup = () => {
         const popupdata = {
             heading: "Add Property",
-            onSubmit: (values) => { console.log('Final Values', values) },
+            onSubmit: (values) => { submitProperty(values) },
             buttons: ['Close', 'Add Property'],
             formData: [{ fieldHeading: 'Property Type', fieldName: 'propertyType', fieldType: 'dropdown', options: [{ name: 'Outdoor', value: 'outdoor' }, { name: 'Flats', value: 'flats' }], initialValue: '' },
             { fieldHeading: 'Property Name', fieldName: 'propertyName', fieldType: 'text', initialValue: '' },
@@ -35,8 +50,8 @@ const Index = () => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-12'>
-                            <Button onClick={createPopup} variant="primary">Add a Property</Button>
-                            <PropertyHomePage/>
+                            {isAuth() && <Button onClick={createPopup} variant="primary">Add a Property</Button>}
+                            <PropertyHomePage allProperties={properties} />
                         </div>
                     </div>
                 </div>
@@ -189,3 +204,16 @@ const stateOptions = [
 ]
 
 export default Index
+Index.getInitialProps = () => {
+    let skip = 0;
+    let limit = 2;
+    return listAllProperties(skip, limit).then(data => {
+        if (data.error) {
+            console.log(data.error);
+        } else {
+            return {
+                properties: data
+            };
+        }
+    });
+};
