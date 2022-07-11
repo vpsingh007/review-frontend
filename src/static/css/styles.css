@@ -55,6 +55,20 @@
     line-height: 2.5;
 }
 
+/* Carousel CSS */
+.carousel-container {
+    height: 280px;
+}
+.slick-prev:before {
+    color: black !important;
+}
+.slick-next:before {
+    color: black !important;
+}
+.slick-slide{
+    width:233px !important;
+}
+
 
 /* common css */
 .bdr-r-0 {
@@ -67,12 +81,10 @@
     height: 44px;
 }
 
-.slick-prev:before {
-    color: black !important;
-}
-.slick-next:before {
-    color: black !important;
-}
-.slick-slide{
-    width:233px !important;
+
+/* Media query */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1350px !important;
+    }
 }

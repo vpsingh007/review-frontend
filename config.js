@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
-
+// console.log("environment..", publicRuntimeConfig)
 export const API = publicRuntimeConfig.PRODUCTION
     ? publicRuntimeConfig.API_PRODUCTION
     : publicRuntimeConfig.API_DEVELOPMENT;

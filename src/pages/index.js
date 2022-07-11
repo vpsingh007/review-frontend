@@ -11,7 +11,7 @@ import { addProperty } from '../actions/propertyAction';
 import { getCookie, isAuth } from '../actions/auth';
 import { listAllProperties } from '../actions/propertyAction';
 const Index = ({properties}) => {
-    console.log(properties);
+    // console.log(properties);
     const value = useContext(PopupContext);
     const { setIsPopupOpen, setPopupData } = value;
     const submitProperty = (values) => {
@@ -50,6 +50,9 @@ const Index = ({properties}) => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-12'>
+                        <a href="/properties/ace-city"><h2 class="pt-3 pb-3 font-weight-bold">Ace City</h2></a>
+                        <a href="/properties/trident-embassy"><h2 class="pt-3 pb-3 font-weight-bold">trident-embassy </h2></a>
+                        <a href="/properties/supertech"><h2 class="pt-3 pb-3 font-weight-bold">supertech </h2></a>
                             {isAuth() && <Button onClick={createPopup} variant="primary">Add a Property</Button>}
                             <PropertyHomePage allProperties={properties} />
                         </div>

@@ -192,8 +192,8 @@ const SinglePropertyCard = ({propertyData}) => {
             {/* LOWER SECTION */}
             <div className='row mb-4'>
                 <div className='col-md-9 d-flex justify-content-between'>
-                    <span className='h2'> {propertyData?.reviews?.length} , Reviews found for this property</span>
-                    {/* <button className="btn btn-secondary">Sort By Popular</button> */}
+                    {/*<span className='h2'> {propertyData?.reviews?.length} , Reviews found for this property </span>
+                     <button className="btn btn-secondary">Sort By Popular</button> */}
                     <div className="dropdown">
                         <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Sort By

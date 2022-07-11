@@ -38,7 +38,7 @@ const Properties = ({ properties }) => {
     // const [skip, setSkip] = useState(0);
     // const [size, setSize] = useState(totalBlogs);
     // const [loadedBlogs, setLoadedBlogs] = useState([]);
-    console.log(properties)
+    // console.log(properties)
 
     // const loadMore = () => {
     //     let toSkip = skip + limit;
@@ -138,9 +138,9 @@ Properties.getInitialProps = () => {
     let limit = 2;
     return listAllProperties(skip, limit).then(data => {
         if (data.error) {
-            console.log(data.error);
+            // console.log(data.error);
         } else {
-            console.log("DATA", data)
+            // console.log("DATA", data)
             return {
                 properties: data
             };

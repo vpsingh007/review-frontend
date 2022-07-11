@@ -58,7 +58,7 @@ const PropertyHomePage = ({ allProperties }) => {
             <div className="row">
                 <div className="col-sm-12 col-md-8">
                     <h2 className='mb-4'>Reviews on Apartments , builder floors and more</h2>
-                    <div className='px-4'>
+                    <div className='px-4 carousel-container'>
                         <MySlider />
                     </div>
 

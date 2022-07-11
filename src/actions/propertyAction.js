@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../../config';
 import queryString from 'query-string';
 import { isAuth, handleResponse } from './auth';
+import axios, {AxiosResponse} from 'axios';
 
 export const addProperty = (payload, token) => {
     return fetch(`${API}/property`, {
@@ -46,7 +47,7 @@ export const listAllProperties = (skip, limit) => {
         limit,
         skip
     };
-    return fetch(`${API}/property/list`, {
+    return fetch(`${API}/properties`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -60,12 +61,10 @@ export const listAllProperties = (skip, limit) => {
         .catch(err => console.log(err));
 };
 
-export const singleProperty = slug => {
-    return fetch(`${API}/property/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+export const fetchSingleProperty = (slug) => {
+    return axios.get(`${API}/property/${slug}`)
+        .then((response) => {
+            console.log(response.data);
+            return response.data;
+        });
 };
