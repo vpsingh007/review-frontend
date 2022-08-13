@@ -1,10 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import Router from 'next/router';
-import { getCookie, isAuth, updateUser } from '../../actions/auth';
+// import Router from 'next/router';
+import { getCookie, updateUser } from '../../actions/auth';
 import { getProfile, update } from '../../actions/user';
-import { API } from '../../config';
+import { API } from '../../../config';
+import Image from 'next/image';
 
 const ProfileUpdate = () => {
     const [values, setValues] = useState({
@@ -18,33 +19,32 @@ const ProfileUpdate = () => {
         success: false,
         loading: false,
         photo: '',
-        userData: process.browser && new FormData()
+        userData: new FormData()
     });
 
     const token = getCookie('token');
-    const { username, username_for_photo, name, email, about, password, error, success, loading, photo, userData } = values;
-
-    const init = () => {
-        getProfile(token).then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setValues({
-                    ...values,
-                    username: data.username,
-                    username_for_photo: data.username,
-                    name: data.name,
-                    email: data.email,
-                    about: data.about
-                });
-            }
-        });
-    };
+    const { username, username_for_photo, name, email, about, password, error, success, loading, userData } = values;
 
     useEffect(() => {
+        const init = () => {
+            getProfile(token).then(data => {
+                if (data.error) {
+                    setValues({ ...values, error: data.error });
+                } else {
+                    setValues({
+                        ...values,
+                        username: data.username,
+                        username_for_photo: data.username,
+                        name: data.name,
+                        email: data.email,
+                        about: data.about
+                    });
+                }
+            });
+        };
         init();
         setValues({ ...values, userData: new FormData() });
-    }, []);
+    }, [values, token]);
 
     const handleChange = name => e => {
         // console.log(e.target.value);
@@ -141,7 +141,7 @@ const ProfileUpdate = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-4">
-                        <img
+                        <Image
                             src={`${API}/user/photo/${username_for_photo}`}
                             className="img img-fluid img-thumbnail mb-3"
                             style={{ maxHeight: 'auto', maxWidth: '100%' }}

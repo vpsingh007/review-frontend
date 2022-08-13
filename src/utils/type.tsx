@@ -1,0 +1,6 @@
+
+export const ERROR_MESSAGE = "ERROR_MESSAGE";
+
+// Popup types
+export const ADD_REVIEW_SUCCESS = "ADD_REVIEW_SUCCESS";
+export const ADD_REVIEW_FAILURE = "ADD_REVIEW_FAILURE";

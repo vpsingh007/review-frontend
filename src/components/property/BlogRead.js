@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import Router from 'next/router';
+// import Router from 'next/router';
 import { getCookie, isAuth } from '../../actions/auth';
 import { list, removeBlog } from '../../actions/blog';
 import moment from 'moment';
@@ -9,10 +9,6 @@ const BlogRead = ({ username }) => {
     const [blogs, setBlogs] = useState([]);
     const [message, setMessage] = useState('');
     const token = getCookie('token');
-
-    useEffect(() => {
-        loadBlogs();
-    }, []);
 
     const loadBlogs = () => {
         list(username).then(data => {
@@ -23,6 +19,10 @@ const BlogRead = ({ username }) => {
             }
         });
     };
+
+    useEffect(() => {
+        loadBlogs();
+    });
 
     const deleteBlog = slug => {
         removeBlog(slug, token).then(data => {
@@ -36,7 +36,7 @@ const BlogRead = ({ username }) => {
     };
 
     const deleteConfirm = slug => {
-        let answer = window.confirm('Are you sure you want to delete your blog?');
+        const answer = window.confirm('Are you sure you want to delete your blog?');
         if (answer) {
             deleteBlog(slug);
         }

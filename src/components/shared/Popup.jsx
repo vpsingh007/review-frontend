@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Form, Button } from 'react-bootstrap';
 import { useForm } from '../hooks/useForm';
-import { returnFormField } from '../../helpers/createFormField';
+import { returnFormField } from '../../utils/createFormField';
 const Popup = ({ isPopupOpen, setIsPopupOpen, popupData }) => {
     const initialFormData = {};
     popupData.formData.map(el => {
@@ -13,7 +13,7 @@ const Popup = ({ isPopupOpen, setIsPopupOpen, popupData }) => {
         <>
             <Modal show={isPopupOpen} onHide={() => { setIsPopupOpen(false) }}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{popupData?.heading || 'Sample heading'}</Modal.Title>
+                    <Modal.Title> {popupData?.heading || ''} </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>

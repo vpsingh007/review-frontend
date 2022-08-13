@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { signup, isAuth } from '../../actions/auth';
+import { signup, isAuth } from '../../services/auth';
 import Router from 'next/router';
 
 const SignupComponent = () => {

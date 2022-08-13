@@ -1,20 +1,23 @@
-import '../static/css/styles.css';
+import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PopupContext from '../components/context/popupContext';
-import AppProps from 'next/app';
+// import {AppProps} from 'next/app';
 import { useState } from 'react';
-import Popup from '../components/shared/Popup';
-const MyApp = ({ Component, pageProps }, AppProps) => {
+import { store } from "../redux/store";
+import { Provider } from "react-redux";
+// import Popup from '../components/shared/Popup';
+import ModalPopup from '../components/shared/ModalPopup';
+
+const MyApp = ({ Component, pageProps }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [popupData, setPopupData] = useState({
-    heading: "Sample Heading1",
-    formData: [{ fieldHeading: 'Email', fieldType: 'email' }, { fieldHeading: 'Name', fieldType: 'text' }]
-  })
+  const [popupData, setPopupData] = useState({});
   return (
-    <PopupContext.Provider value={{ isPopupOpen, setIsPopupOpen, setPopupData }}>
-      {isPopupOpen && <Popup isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} popupData={popupData} />}
-      <Component {...pageProps} />
-    </PopupContext.Provider>
+    <Provider store={store}>
+      <PopupContext.Provider value={{ isPopupOpen, setIsPopupOpen, setPopupData }}>
+        {isPopupOpen && <ModalPopup isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} popupData={popupData} />}
+        <Component {...pageProps} />
+      </PopupContext.Provider>
+    </Provider>
 
   );
 }

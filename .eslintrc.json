@@ -1,0 +1,84 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "jsdom": true,
+    "JSX": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint"],
+  "rules": {
+    "react/jsx-closing-bracket-location": "warn",
+    "react/jsx-tag-spacing": "off",
+    "array-bracket-spacing": [0, "never"],
+    "react/prop-types": "off",
+    "prefer-const": "warn",
+    "jsx-quotes": "off",
+    "no-console": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-useless-escape": "off",
+    "no-unused-vars": "off",
+    // unknown is I don't know; any is I don't care
+    "@typescript-eslint/no-explicit-any": ["off", { "ignoreRestArgs": true }],
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/ban-types": ["off"],
+    "react/display-name": ["off"],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/react-in-jsx-scope": "off"
+  }
+}
+
+// {
+//   "env": {
+//     "browser": true,
+//     "es6": true
+// },
+// "extends": [
+//     "plugin:react/recommended",
+//     "airbnb",
+//     "plugin:react-hooks/recommended",
+//     "prettier"
+// ],
+// "globals": {
+//     "Atomics": "readonly",
+//     "SharedArrayBuffer": "readonly"
+// },
+// "parserOptions": {
+//     "ecmaFeatures": {
+//         "jsx": true
+//     },
+//     "ecmaVersion": 2018,
+//     "sourceType": "module"
+// },
+// "plugins": ["react", "jsx-a11y", "import", "prettier"],
+// "rules": {
+//     "prettier/prettier": "error",
+//     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+//     "react/require-default-props": [0],
+// }
+// }

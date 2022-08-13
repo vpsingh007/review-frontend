@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Link from 'next/link';
-import { emailContactForm } from '../../actions/form';
+import React, { useState } from 'react';
+// import Link from 'next/link';
+import { emailContactForm } from '../services/form';
 
 const ContactForm = ({ authorEmail }) => {
     const [values, setValues] = useState({
@@ -13,7 +13,7 @@ const ContactForm = ({ authorEmail }) => {
         error: false
     });
 
-    const { message, name, email, sent, buttonText, success, error } = values;
+    const { message, name, email, buttonText, success, error } = values;
 
     const clickSubmit = e => {
         e.preventDefault();
