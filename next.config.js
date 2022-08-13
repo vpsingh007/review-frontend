@@ -10,7 +10,8 @@ module.exports = {
         FB_APP_ID: '415724632408060',
         DISQUS_SHORTNAME: 'http-localhost-3000-ri4bp31csa',
         GOOGLE_CLIENT_ID:'1067493142377-nd8fj3ddt1sddds57jcojdnv60k7q279.apps.googleusercontent.com'
-    }
+    },
+    swcMinify: true,
 }
 
 // API_DEVELOPMENT: 'https://review-data.herokuapp.com/api',
