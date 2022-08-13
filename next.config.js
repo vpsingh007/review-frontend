@@ -3,8 +3,8 @@ module.exports = {
     publicRuntimeConfig: {
         APP_NAME: 'REVIEW-SITE',
         API_DEVELOPMENT: 'https://review-data.herokuapp.com/api',
-        API_PRODUCTION: 'https://seoblog.com/api',
-        PRODUCTION: false,
+        API_PRODUCTION: 'https://review-data.herokuapp.com/api',
+        PRODUCTION: true,
         DOMAIN_DEVELOPMENT: 'http://localhost:3000',
         DOMAIN_PRODUCTION: 'https://localhost:3000',
         FB_APP_ID: '415724632408060',
