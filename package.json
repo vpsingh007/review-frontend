@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "16.13.2",
+    "npm": "8.1.2"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "https://pkg.csb.dev/reduxjs/redux-toolkit/commit/933aa4a1/@reduxjs/toolkit",
     "@types/node": "18.0.3",
@@ -24,7 +28,6 @@
     "moment": "^2.24.0",
     "next": "12.2.2",
     "next-redux-wrapper": "^7.0.5",
-    "node": "^16.13.2",
     "node-sass": "^7.0.1",
     "nprogress": "^0.2.0",
     "prettier": "^2.7.1",
