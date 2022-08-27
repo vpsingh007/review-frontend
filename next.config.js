@@ -2,7 +2,7 @@
 module.exports = {
     publicRuntimeConfig: {
         APP_NAME: 'REVIEW-SITE',
-        API_DEVELOPMENT: 'https://review-data.herokuapp.com/api',
+        API_DEVELOPMENT: 'http://localhost:8000/api',
         API_PRODUCTION: 'https://review-data.herokuapp.com/api',
         PRODUCTION: true,
         DOMAIN_DEVELOPMENT: 'http://localhost:3000',
