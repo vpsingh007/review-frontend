@@ -137,6 +137,70 @@ button {
   border: solid 2px #198754;
 } */
 
+/* SearchBar CSS */
+.search-box {
+  max-width: 900px;
+}
+.search-box .row>*{
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+}
+.search-box .row .input {
+  margin-left: -1px;
+}
+
+.search-box .row .button button {
+  width: 100%;
+  background-color: #fd3752;
+  border-color: #ea1331;
+}
+.search-box .row .button button i {
+  margin-right: 10px;
+}
+.search-box .row .button button:hover, .search-box .row .button button:focus {
+  background-color: #ea1331;
+}
+
+.no-suggestions {
+  position: absolute;
+  right: 0;
+  left: 0;
+  color: #999;
+  padding: 0.5rem;
+  border: 1px solid #999;
+  border-top-width: 0;
+}
+
+.suggestions {
+  position: absolute;
+  right: 0;
+  left: 0;
+  border: 1px solid #999;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  max-height: 143px;
+  overflow-y: auto;
+  padding-left: 0;
+  /* width: calc(300px + 1rem); */
+}
+
+.suggestions li {
+  padding: 0.5rem;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+  background-color: #e8e8e8;
+  color: #4e4e4e;
+  cursor: pointer;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
+
 
 /* Media query */
 @media (min-width: 1200px) {

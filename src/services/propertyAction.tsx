@@ -90,6 +90,17 @@ export const fetchSingleProperty = (_slug: any) => {
         });
 };
 
+// Search data API
+export const fetchSearchData = (_slug: any) => {
+    return axios.get(`${API}/property/search/${_slug}`)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((err) => {
+            return err.error;
+        });
+};
+
 // add review comments
 // export const addReviewAction = (payload, token) => {
     // console.log("reviewe comment data in action...", payload)
