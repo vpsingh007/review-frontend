@@ -57,7 +57,10 @@ const SearchBox = ({ heading }: SearchBoxProps) => {
                                 return (
                                     
                                     <li key={index} onClick={() => searchSubmit(property)}>
-                                        {property.propertyname}                                        
+                                        {property.propertyname}{', '} 
+                                        {property.sector}{', '} 
+                                        {property.city}{', '} 
+                                        {property.state}                                        
                                     </li>
                                                            
                                 );

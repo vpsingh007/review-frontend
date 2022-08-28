@@ -77,7 +77,7 @@ const PropertyHomePage = ({ allProperties }) => {
                     <h2 style={{ marginTop: '3rem' }} className="mb-3">Recently added reviews on properties</h2>
 
                     <div className='col-sm-12'>
-                        {allProperties?.map((data, index) => {
+                        {allProperties.length && allProperties.map((data, index) => {
                             return (<div key={index} className='row flex flex-row border rounded p-3 mb-2 mr-2'>
                                 <div className='col-3'>
                                     <Image src={thumbnailImg} width={150} height={100} className='mx-1' alt="ss" />
