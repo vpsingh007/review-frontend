@@ -75,9 +75,9 @@ const SingleProperty = ({ property, loading }: SinglePropertyProps): JSX.Element
 
 
     return (
-        // <React.Fragment>
-        //     {head()}
         <React.Fragment>
+            {head()}
+        {/* <React.Fragment> */}
             <Layout>
                 <main>
                         <div className="container-fluid p-0">
