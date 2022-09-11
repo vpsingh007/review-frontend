@@ -56,14 +56,14 @@ const SingleProperty = ({ property, loading }: SinglePropertyProps): JSX.Element
     // };
     const head = () => (
         <Head>
-            <title>
+            {/* <title>
                 {property.propertyname} | "Search Property"
-            </title>
+            </title> */}
             {/*<meta name="description" content={property.mdesc} /> */}
             {/* <link rel="canonical" href={`${DOMAIN}/properties/${query.slug}`} /> */}
             {/* <meta property="og:title" content={`${property.propertyname} | ${APP_NAME}`} /> */}
             {/*<meta property="og:description" content={blog.mdesc} />*/}
-            <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com" />
+            <meta httpEquiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com" />
             {/* <meta property="og:url" content={`${DOMAIN}/properties/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
