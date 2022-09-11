@@ -14,6 +14,7 @@ import { useAppDispatch } from '../../redux/hooks';
 import SinglePropertyCard from '../../components/property/SinglePropertyCard';
 import SearchBox from '../../components/shared/SearchBox';
 import NotFound from '../../components/shared/NotFound';
+import { Head } from 'next/document';
 // import { GetStaticPathsResult } from 'next';
 export interface propertyData {
     slug: string;
@@ -53,24 +54,24 @@ const SingleProperty = ({ property, loading }: SinglePropertyProps): JSX.Element
     //         }
     //     });
     // };
-    // const head = () => (
-    //     <Head>
-    //         <title>
-    //             {property.propertyname} | {APP_NAME}
-    //         </title>
-    //         {/*<meta name="description" content={property.mdesc} /> */}
-    //         <link rel="canonical" href={`${DOMAIN}/properties/${query.slug}`} />
-    //         <meta property="og:title" content={`${property.propertyname} | ${APP_NAME}`} />
-    //         {/*<meta property="og:description" content={blog.mdesc} />*/}
-    //         <meta property="og:type" content="webiste" />
-    //         <meta property="og:url" content={`${DOMAIN}/properties/${query.slug}`} />
-    //         <meta property="og:site_name" content={`${APP_NAME}`} />
+    const head = () => (
+        <Head>
+            <title>
+                {property.propertyname} | "Search Property"
+            </title>
+            {/*<meta name="description" content={property.mdesc} /> */}
+            {/* <link rel="canonical" href={`${DOMAIN}/properties/${query.slug}`} /> */}
+            {/* <meta property="og:title" content={`${property.propertyname} | ${APP_NAME}`} /> */}
+            {/*<meta property="og:description" content={blog.mdesc} />*/}
+            <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com" />
+            {/* <meta property="og:url" content={`${DOMAIN}/properties/${query.slug}`} />
+            <meta property="og:site_name" content={`${APP_NAME}`} />
 
-    //         <meta property="og:image" content={`${API}/property/photo/${property.slug}`} />
-    //         <meta property="og:image:secure_url" content={`${API}/blog/photo/${property.slug}`} />
-    //         <meta property="og:image:type" content="image/jpg" />
-    //     </Head>
-    // );
+            <meta property="og:image" content={`${API}/property/photo/${property.slug}`} />
+            <meta property="og:image:secure_url" content={`${API}/blog/photo/${property.slug}`} />
+            <meta property="og:image:type" content="image/jpg" /> */}
+        </Head>
+    );
 
 
     return (
