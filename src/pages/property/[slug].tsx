@@ -97,13 +97,15 @@ const SingleProperty = ({ property, loading }: SinglePropertyProps): JSX.Element
     );
 };
 
-SingleProperty.getInitialProps = async ({ query }: any) => {
+export const getServerSideProps = async ({ query }: any) => {
     const response = await fetchSingleProperty(query.slug);
-    console.log("response...", response.property)
-    const props = {
-        property: response.property
+    // console.log("response...", response.property)
+    // const 
+    return {
+        props: {
+            property: response.property
+        }
     }
-    return props
 };
 
 // export default SingleProperty;
